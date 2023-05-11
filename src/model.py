@@ -1,20 +1,19 @@
 from PyQt6.QtGui import QStandardItemModel, QStandardItem
-from pydantic import BaseModel
-import random
+from log_getter import get_event_logs
+from schemas import LogModel
 
 column_headers = ["Уровень", "Дата и время", "Источник", "Код источника", "Категория задачи"]
-event_logs = [["Сведения", "11.05.2023 12:09:55", "SecurityCenter", f"{random.randint(0, 100)}", "Отсутствует"],
-              ["Сведения", "11.05.2023 12:09:54", "RestartManager", f"{random.randint(0, 100)}", "Отсутствует"],
-              ["Сведения", "11.05.2023 12:09:32", "VSS", f"{random.randint(0, 100)}", "Отсутствует"],
-              ["Сведения", "11.05.2023 12:09:45", "SecurityCenter", f"{random.randint(0, 100)}", "Отсутствует"]]
+max_header_len = max([len(header) for header in column_headers])
+count_headers = len(column_headers)
 
-
+event_logs = get_event_logs()
 
 model = QStandardItemModel()
 model.setHorizontalHeaderLabels(column_headers)
 
 for event_log in event_logs:
-    item = []
-    for item_log in event_log:
-        item.append(QStandardItem(item_log))
+    sc = LogModel(**event_log).dict()
+    item = [QStandardItem(str(item_log)) for item_log in sc.values()]
+    for i in item:
+        i.setEditable(False)
     model.appendRow(item)

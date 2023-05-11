@@ -1,13 +1,12 @@
+from typing import Any
+
 from pydantic import BaseModel
 
 
 class LogModel(BaseModel):
-    TimeGenerated: None
-    SourceName: None
-    EventID: None
-    EventType: None
-    EventCategory: None
+    EventType: int | None
+    TimeGenerated: Any
+    SourceName: str
+    EventID: int | None
+    EventCategory: int | None
 
-
-['ClosingRecordNumber', 'ComputerName', 'Data', 'EventCategory', 'EventID', 'EventType', 'RecordNumber', 'Reserved',
- 'ReservedFlags', 'Sid', 'SourceName', 'StringInserts', 'TimeGenerated', 'TimeWritten']
