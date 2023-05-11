@@ -3,10 +3,10 @@ from typing import Any
 from pydantic import BaseModel
 
 
-class LogModel(BaseModel):
-    EventType: int | None
-    TimeGenerated: Any
+class LogSchema(BaseModel):
+    EventType: str
+    TimeGenerated: str
     SourceName: str
-    EventID: int | None
-    EventCategory: int | None
+    EventID: str
+    EventCategory: str
 

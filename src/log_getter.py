@@ -15,7 +15,7 @@ def get_event_logs():
             events = win32evtlog.ReadEventLog(hand, flags, 0)
             for event in events:
                 event_logs.append(
-                    {"EventType": event.EventType, "TimeGenerated": event.TimeGenerated, "SourceName": event.SourceName,
+                    {"EventType": event.EventType, "TimeGenerated": str(event.TimeGenerated), "SourceName": event.SourceName,
                      "EventID": event.EventID, "EventCategory": event.EventCategory,
                      "ClosingRecordNumber": event.ClosingRecordNumber, "ComputerName": event.ComputerName,
                      "Data": event.Data, "RecordNumber": event.RecordNumber, "Reserved": event.Reserved,
