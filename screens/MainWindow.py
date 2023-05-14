@@ -1,7 +1,5 @@
-from PyQt6.QtWidgets import QMainWindow, QTreeView, QTreeWidget, QVBoxLayout, QLayout, QHBoxLayout, QWidget
+from PyQt6.QtWidgets import QMainWindow, QHBoxLayout, QWidget
 from PyQt6.QtCore import Qt
-from src.model import event_headers_model
-from src.model import event_tree_model
 from widgets.LogHeadersWidget import LogHeadersWidget
 from widgets.LogViewWidget import LogViewWidget
 

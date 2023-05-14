@@ -29,6 +29,6 @@ class LogHeadersWidget(QWidget):
         for val in self.__table_view.selectedIndexes():
             header = val.data()
             if header != self._prev_header:
-                print(f"Header was changed '{header}' -> '{self._prev_header}'")
+                print(f"Header was changed '{self._prev_header}' -> '{header}'")
                 self._prev_header = header
                 event_log_changer(header)

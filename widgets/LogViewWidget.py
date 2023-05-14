@@ -1,6 +1,8 @@
-from PyQt6.QtWidgets import QTreeView, QVBoxLayout, QWidget
+from PyQt6.QtWidgets import QTreeView, QVBoxLayout, QWidget, QMessageBox
+from widgets.LogInfoDialog import LogInfo
 
 from src.model import event_tree_model
+from src.log_getter import get_event_logs
 
 _minimum_widget_width = 300
 
@@ -23,5 +25,7 @@ class LogViewWidget(QWidget):
         self.setLayout(self.vbox)
 
     def some_action(self):
-        for val in self._tree_view.selectedIndexes():
-            print(val.data())
+        log_number = self._tree_view.selectedIndexes()[0].data()
+        log = get_event_logs.find_log(log_number)
+        dialog = LogInfo(log=log, parent=self)
+        dialog.exec()
